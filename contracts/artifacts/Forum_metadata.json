@@ -361,9 +361,9 @@
 	},
 	"sources": {
 		"FT5004-project/contracts/Forum.sol": {
-			"keccak256": "0x819a15f6bcd0ec66129e43418bf285e186ba4c1752553ae8cc79643dc7b8b1f0",
+			"keccak256": "0xf83fcd0f899f8c717cdf4c2aff34a087f3c135a1b715123fa7bae11f8fee26ad",
 			"urls": [
-				"bzzr://a2f562d798dec1091805649ba7872339d63a2ddcad7f05a4003ca06534bd407a"
+				"bzzr://223686191ca9008e4610536dd0afeea9899bfd6c6543da632ce02ac0aad7b67c"
 			]
 		},
 		"FT5004-project/contracts/ForumAccount.sol": {

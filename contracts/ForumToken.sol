@@ -1,6 +1,7 @@
 pragma solidity ^0.5.0;
 
 contract ForumToken {
+    // 1 forum token = 10^-4 ether
     string public constant name = "ForumToken";
     string public constant symbol = "FRT";
     uint8 public constant decimals = 18;
@@ -29,7 +30,7 @@ contract ForumToken {
 
         // deduct money from user
         address payable recipient = address(uint160(contractAddress));
-        uint256 total_payable = _amount / 100;
+        uint256 total_payable = _amount / 10000;
         recipient.transfer(total_payable);
 
         // top up forum token for user
@@ -42,9 +43,9 @@ contract ForumToken {
         // transfer forum tokens back to the contract
         transferFrom(msg.sender, contractAddress, _amount);
 
-        // pay ether to user
+        // pay ether to user 
         address payable recipient = address(uint160(msg.sender));
-        recipient.transfer(_amount / 100);
+        recipient.transfer(_amount / 10000 * 99 / 100);
     }
 
     function balanceOf(address owner) public view returns (uint256) {

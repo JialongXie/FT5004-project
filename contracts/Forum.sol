@@ -90,9 +90,6 @@ contract Forum {
         address recipient = getAnswerer(_discussionId, _answerId);
         FRTContract.transferFrom(address(this), recipient, discussions[_discussionId].reward);
 
-        // reward the answerer with highest number of likes
-    
-
         // mark the discussion as completed
         discussions[_discussionId].completed = true;
         emit DiscussionCompleted(_discussionId, discussions[_discussionId].completed);

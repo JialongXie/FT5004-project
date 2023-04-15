@@ -286,9 +286,9 @@
 	},
 	"sources": {
 		"FT5004-project/contracts/ForumToken.sol": {
-			"keccak256": "0x69984c7c581b279b9b5e4d424ea6020ae5af0566568d6b08915f1c350d4acd05",
+			"keccak256": "0xa926177f88b3662bc72c8b74dc1367ecbeb8f3261d3f9715ebf2d0c428d1e4ee",
 			"urls": [
-				"bzzr://7f3ea2c3075679ca86fc4037667a095cb4852008e7079099b3c37c127c809c5d"
+				"bzzr://32a3b1cb378e94095cb1d9fc9ce609bbcb89efcb09348e0dcff4ca8335d662e7"
 			]
 		}
 	},
