@@ -1,11 +1,13 @@
 pragma solidity ^0.5.0;
 import "./ForumToken.sol";
+import "./ForumAccount.sol";
 
 contract Forum {
     uint256 public discussionCount = 0;
 
     //access ForumToken Contract
     ForumToken FRTContract;
+    ForumAccount FRAContract;
 
     struct discussion {
         uint256 discussionId;
@@ -26,8 +28,9 @@ contract Forum {
         uint256 timestamp;
     }
 
-    constructor(ForumToken FRTAddress) public {
+    constructor(ForumToken FRTAddress, ForumAccount FRAAddress) public {
         FRTContract = FRTAddress;
+        FRAContract = FRAAddress;
     }
 
     // record all discussions
@@ -72,6 +75,10 @@ contract Forum {
             false
         );
         discussions[discussionCount] = newDiscussion;
+
+        // transfer reward from question creator to this contract
+        FRTContract.transferFrom(msg.sender, address(this), _reward);
+
         emit DiscussionCreated(msg.sender, discussionCount, _title, _reward, false);
         discussionCount++;
     }
@@ -81,7 +88,10 @@ contract Forum {
     function discussionCompleted(uint256 _discussionId, uint256 _answerId) public creatorOnly(_discussionId) {
         // reward the best answerer with forum token
         address recipient = getAnswerer(_discussionId, _answerId);
-        FRTContract.transferFrom(msg.sender, recipient , discussions[_discussionId].reward);
+        FRTContract.transferFrom(address(this), recipient, discussions[_discussionId].reward);
+
+        // reward the answerer with highest number of likes
+    
 
         // mark the discussion as completed
         discussions[_discussionId].completed = true;
@@ -98,6 +108,11 @@ contract Forum {
         answer memory new_answer = answer(_answerId, _answer, msg.sender, 0, 0, block.timestamp);
         answers[_discussionId][_answerId] = new_answer;
         emit AnswerCreated(_answerId, _answer, msg.sender);
+
+        // give 2 and 5 reputation points to question poster and answer poster respectively
+        FRAContract.addReputationPoints(msg.sender, 5);
+        address _accountAddress = discussions[_discussionId].creator;
+        FRAContract.addReputationPoints(_accountAddress, 2);
     }
 
     // get the answerer
@@ -114,6 +129,12 @@ contract Forum {
     // for all: like the answer
     function likeAnswer(uint256 _discussionId, uint256 _answerId) public {
         answers[_discussionId][_answerId].likes += 1;
+
+        // add 1 reputation point to the answerer if likes are more than dislikes
+        if (answers[_discussionId][_answerId].likes > answers[_discussionId][_answerId].dislikes) {
+            address _accountAddress = answers[_discussionId][_answerId].answerer;
+            FRAContract.addReputationPoints(_accountAddress, 1);
+        }
     } 
 
     // for all: dislike the answer

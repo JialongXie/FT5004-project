@@ -1,0 +1,138 @@
+{
+	"compiler": {
+		"version": "0.5.0+commit.1d4f565a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_accountAddress",
+						"type": "address"
+					}
+				],
+				"name": "getReputationPoints",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "exchangeReputationPoints",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_accountAddress",
+						"type": "address"
+					},
+					{
+						"name": "points",
+						"type": "uint256"
+					}
+				],
+				"name": "addReputationPoints",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_accountAddress",
+						"type": "address"
+					}
+				],
+				"name": "getUsername",
+				"outputs": [
+					{
+						"name": "",
+						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_username",
+						"type": "string"
+					}
+				],
+				"name": "register",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"name": "FRTAddress",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"FT5004-project/contracts/ForumAccount.sol": "ForumAccount"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"FT5004-project/contracts/ForumAccount.sol": {
+			"keccak256": "0x5c9fcdf68c0589bc729f842836127b273ee54413b2e7ba8c2a22157b02a725b2",
+			"urls": [
+				"bzzr://58dfbf87c2c15d543468b44a0874dfb18c8e028d0ffd36fe4ca228b4deffc204"
+			]
+		},
+		"FT5004-project/contracts/ForumToken.sol": {
+			"keccak256": "0x69984c7c581b279b9b5e4d424ea6020ae5af0566568d6b08915f1c350d4acd05",
+			"urls": [
+				"bzzr://7f3ea2c3075679ca86fc4037667a095cb4852008e7079099b3c37c127c809c5d"
+			]
+		}
+	},
+	"version": 1
+}

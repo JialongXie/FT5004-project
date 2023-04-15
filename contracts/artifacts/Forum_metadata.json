@@ -1,0 +1,383 @@
+{
+	"compiler": {
+		"version": "0.5.0+commit.1d4f565a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "discussions",
+				"outputs": [
+					{
+						"name": "discussionId",
+						"type": "uint256"
+					},
+					{
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"name": "completed",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"name": "_content",
+						"type": "string"
+					},
+					{
+						"name": "_reward",
+						"type": "uint256"
+					}
+				],
+				"name": "createDiscussion",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "answers",
+				"outputs": [
+					{
+						"name": "answerId",
+						"type": "uint256"
+					},
+					{
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"name": "answerer",
+						"type": "address"
+					},
+					{
+						"name": "likes",
+						"type": "uint256"
+					},
+					{
+						"name": "dislikes",
+						"type": "uint256"
+					},
+					{
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_discussionId",
+						"type": "uint256"
+					},
+					{
+						"name": "_answerId",
+						"type": "uint256"
+					}
+				],
+				"name": "dislikeAnswer",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_discussionId",
+						"type": "uint256"
+					},
+					{
+						"name": "_answerId",
+						"type": "uint256"
+					}
+				],
+				"name": "likeAnswer",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_discussionId",
+						"type": "uint256"
+					},
+					{
+						"name": "_answerId",
+						"type": "uint256"
+					}
+				],
+				"name": "getAnswerer",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_discussionId",
+						"type": "uint256"
+					},
+					{
+						"name": "_answerId",
+						"type": "uint256"
+					}
+				],
+				"name": "discussionCompleted",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "discussionCount",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_discussionId",
+						"type": "uint256"
+					},
+					{
+						"name": "_answer",
+						"type": "string"
+					}
+				],
+				"name": "postAnswer",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_discussionId",
+						"type": "uint256"
+					},
+					{
+						"name": "_answerId",
+						"type": "uint256"
+					}
+				],
+				"name": "checkAnswer",
+				"outputs": [
+					{
+						"name": "",
+						"type": "string"
+					},
+					{
+						"name": "",
+						"type": "address"
+					},
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"name": "FRTAddress",
+						"type": "address"
+					},
+					{
+						"name": "FRAAddress",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "discussionId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"name": "reward",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "completed",
+						"type": "bool"
+					}
+				],
+				"name": "DiscussionCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "completed",
+						"type": "bool"
+					}
+				],
+				"name": "DiscussionCompleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"name": "answerId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"name": "answerer",
+						"type": "address"
+					}
+				],
+				"name": "AnswerCreated",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"FT5004-project/contracts/Forum.sol": "Forum"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"FT5004-project/contracts/Forum.sol": {
+			"keccak256": "0x819a15f6bcd0ec66129e43418bf285e186ba4c1752553ae8cc79643dc7b8b1f0",
+			"urls": [
+				"bzzr://a2f562d798dec1091805649ba7872339d63a2ddcad7f05a4003ca06534bd407a"
+			]
+		},
+		"FT5004-project/contracts/ForumAccount.sol": {
+			"keccak256": "0x5c9fcdf68c0589bc729f842836127b273ee54413b2e7ba8c2a22157b02a725b2",
+			"urls": [
+				"bzzr://58dfbf87c2c15d543468b44a0874dfb18c8e028d0ffd36fe4ca228b4deffc204"
+			]
+		},
+		"FT5004-project/contracts/ForumToken.sol": {
+			"keccak256": "0x69984c7c581b279b9b5e4d424ea6020ae5af0566568d6b08915f1c350d4acd05",
+			"urls": [
+				"bzzr://7f3ea2c3075679ca86fc4037667a095cb4852008e7079099b3c37c127c809c5d"
+			]
+		}
+	},
+	"version": 1
+}
