@@ -13,3 +13,6 @@
 
 ## ForumAccount.sol
 #### This is for reputation points reward system recording. Users can register an account and redeem reputation points to Forum Token (100 reputation points = 1 Forum Token).
+
+## UI
+#### The UI is built within the UI folder. Download and click on Index.html to open it
