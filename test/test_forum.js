@@ -88,41 +88,13 @@ contract('Forum', function(accounts){
             "Failed to exchange reputation points"
         );
     });
+
+    it('9. Test discussion completed', async () => {
+        let disComplete = await forumInstance.discussionCompleted(0, 0, {from: accounts[1]});
+        assert.notStrictEqual(
+            disComplete,
+            undefined,
+            "Failed to complete discussion"
+        );
+    });
 });
-
-
-//     before(async () => {
-//         forumTokenInstance = await ForumToken.deployed();
-//         forumAccountInstance = await ForumAccount.deployed();
-//         forumInstance = await Forum.deployed();
-//     });
-//     console.log("Testing Forum Contract");
-
-//     it('4. Test creation of the discussion', async () => {
-//         let createDis = await forumInstance.createDiscussion('dis1', 'content', 1);
-
-//         assert.notStrictEqual(
-//             createDis,
-//             undefined,
-//             "Failed to create discussion1"
-//         );
-//     });
-
-//     it('5. Test post answer', async () => {
-//         let postAns = await forumInstance.postAnswer(1, 'answer1');
-//         assert.notStrictEqual(
-//             postAns,
-//             undefined,
-//             "Failed to post answer1"
-//         );
-//     });
-
-//     it('6. Test like answer', async () => {
-//         let likeAns = await forumInstance.likeAnswer(2, 1);
-//         assert.notStrictEqual(
-//             likeAns,
-//             undefined,
-//             "Failed to like answer1"
-//         );
-//     });
-// });
