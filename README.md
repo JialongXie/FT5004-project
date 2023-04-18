@@ -1,6 +1,9 @@
 # FT5004-project
 ## Objective
-#### To create a reward-based forum for public. Users can post their questions on the forum and set reward for the best answer to encourage other users to actively post answers for the question.
+#### We provide a platform for users to express their opinions and communicate, interact with each other freely. Through answering and questioning, they have the chance to receive rewards. The best answers and questions which receive high reputation or chosen will gain tokens or reputation points based on our incentive-driven mechanism. Through this, we manage to find solutions for each question and build a forum step by step. 
+
+#### We provide respondent tokens for being chosen by the questioner as the best answer and gain reputation points for likes. For the high popularity question, the questioner can get more chances to get exposure and also gain reputation points. Through this way, all users can choose to become a respondent or a questioner to help build the community. 
+
 
 
 ## Forum.sol
@@ -14,5 +17,5 @@
 ## ForumAccount.sol
 #### This is for reputation points reward system recording. Users can register an account and redeem reputation points to Forum Token (100 reputation points = 1 Forum Token).
 
-## UI
+## User Interface
 #### The UI is built within the UI folder. Download and click on Index.html to open it
