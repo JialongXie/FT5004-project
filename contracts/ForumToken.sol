@@ -73,6 +73,9 @@ contract ForumToken {
         return true;
     }
     
+    function getContractAddress() public returns (address) {
+        return contractAddress;
+    }
 
     
 }

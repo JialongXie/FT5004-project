@@ -36,7 +36,9 @@ contract Forum {
     // record all discussions
     mapping(uint256 => discussion) public discussions;
     // record all answers for each discussion, e.g: answers[_discussionId] returns a list of answers for the discussion
-    mapping(uint256 => answer[]) public answers;
+    mapping(uint256 => mapping (uint256 => answer)) public answers;
+    // record number of answers in each discussion (for incremental of answer id)
+    mapping(uint256 => uint256) answerSizes; // key = discussion id, value = number of answers in the discussion
 
     event DiscussionCreated(
         address creator,
@@ -76,6 +78,9 @@ contract Forum {
         );
         discussions[discussionCount] = newDiscussion;
 
+        // number of answers posted = 0
+        answerSizes[discussionCount] = 0;
+
         // transfer reward from question creator to this contract
         FRTContract.transferFrom(msg.sender, address(this), _reward);
 
@@ -100,8 +105,10 @@ contract Forum {
         // check if the discussion is completed
         require(discussions[_discussionId].completed == false, "the discussion is completed.");
 
+        // get answer Id
+        uint256 _answerId = answerSizes[_discussionId];
+
         // post answer
-        uint256 _answerId = answers[_discussionId].length;
         answer memory new_answer = answer(_answerId, _answer, msg.sender, 0, 0, block.timestamp);
         answers[_discussionId][_answerId] = new_answer;
         emit AnswerCreated(_answerId, _answer, msg.sender);
@@ -110,6 +117,9 @@ contract Forum {
         FRAContract.addReputationPoints(msg.sender, 5);
         address _accountAddress = discussions[_discussionId].creator;
         FRAContract.addReputationPoints(_accountAddress, 2);
+
+        // increase size
+        answerSizes[_discussionId] = answerSizes[_discussionId]++;
     }
 
     // get the answerer

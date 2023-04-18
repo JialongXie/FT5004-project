@@ -15,7 +15,7 @@ contract('Forum', function(accounts){
     });
     console.log("Testing Forum Contract");
 
-    it('1. Test topup of the forumtoken', async () => {
+    it('1. Test topup of the forum token', async () => {
         let TokentopUp = await forumTokenInstance.topUp(1, {from: accounts[1], value: 1000000000000000000});
 
         assert.notStrictEqual(
@@ -25,7 +25,7 @@ contract('Forum', function(accounts){
         );
     });
 
-    it('2. Test withdraw of the forumtoken', async () => {
+    it('2. Test withdraw of the forum token', async () => {
         let TokenwithDraw = await forumTokenInstance.withdraw(1);
         assert.notStrictEqual(
             TokenwithDraw,
@@ -34,8 +34,8 @@ contract('Forum', function(accounts){
         );
     });
 
-    it('3. Test register of forumaccount', async () => {
-        let accountRegister = await forumAccountInstance.register('123');
+    it('3. Test register of forum account', async () => {
+        let accountRegister = await forumAccountInstance.register('123', {from: accounts[2]});
         assert.notStrictEqual(
             accountRegister,
             undefined,
@@ -44,7 +44,7 @@ contract('Forum', function(accounts){
     });
 
     it('4. Test creation of the discussion', async () => {
-        let createDis = await forumInstance.createDiscussion('dis1', 'content', 1);
+        let createDis = await forumInstance.createDiscussion('dis1', 'content', 1, {from: accounts[1]});
 
         assert.notStrictEqual(
             createDis,
@@ -54,7 +54,7 @@ contract('Forum', function(accounts){
     });
 
     it('5. Test post answer', async () => {
-        let postAns = await forumInstance.postAnswer(0, 'answer1');
+        let postAns = await forumInstance.postAnswer(0, 'answer1', {from: accounts[2]});
         assert.notStrictEqual(
             postAns,
             undefined,
@@ -63,11 +63,29 @@ contract('Forum', function(accounts){
     });
 
     it('6. Test like answer', async () => {
-        let likeAns = await forumInstance.likeAnswer(0, 1);
+        let likeAns = await forumInstance.likeAnswer(0, 0);
         assert.notStrictEqual(
             likeAns,
             undefined,
             "Failed to like answer1"
+        );
+    });
+
+    it('7. Test add reputation points', async () => {
+        let addRP = await forumAccountInstance.addReputationPoints(accounts[1],100);
+        assert.notStrictEqual(
+            addRP,
+            undefined,
+            "Failed to add reputation points"
+        );
+    });
+
+    it('8. Test exchange reputation points', async () => {
+        let exchangeRP = await forumAccountInstance.exchangeReputationPoints(100, {from: accounts[1]});
+        assert.notStrictEqual(
+            exchangeRP,
+            undefined,
+            "Failed to exchange reputation points"
         );
     });
 });

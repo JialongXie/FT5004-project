@@ -34,7 +34,7 @@ contract ForumAccount {
 
     function exchangeReputationPoints(uint256 _amount) public {
         require(_amount % 100 == 0, "the amount must be a multiple of 100");
-        FRTContract.transferFrom(address(this), msg.sender, _amount/100);
+        FRTContract.transferFrom(FRTContract.getContractAddress(), msg.sender, _amount/100);
     }
 
     function getUsername(address _accountAddress) public view returns (string memory) {
